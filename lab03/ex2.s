@@ -20,16 +20,17 @@ dest:
     .word   0
 
 .text
+#t0 = k; s0 = a; s1 = b; s2 = c; s3 = d;t1 = l; t2 = m
 main:
-    addi t0, x0, 0
-    addi s0, x0, 0
-    la s1, source
-    la s2, dest
+    addi t0, x0, 0 #k = 0
+    addi s0, x0, 0 #a = 0
+    la s1, source #b = sourceArr
+    la s2, dest #s2 = destArr
 loop:
-    slli s3, t0, 2
-    add t1, s1, s3
-    lw t2, 0(t1)
-    beq t2, x0, exit
+    slli s3, t0, 2 # d = k << 2 
+    add t1, s1, s3 #l = b + d
+    lw t2, 0(t1) # m = sourceArr[l]
+    beq t2, x0, exit #if sourceArr[l] == 0: exit.
     add a0, x0, t2
     addi sp, sp, -8
     sw t0, 0(sp)
