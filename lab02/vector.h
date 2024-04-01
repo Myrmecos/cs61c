@@ -33,7 +33,6 @@
 #include <sys/types.h>
 
 typedef struct vector_t vector_t;
-
 /*
  *  Next, we provide the prototypes for the functions defined in vector.c.  This
  *  is a way of telling the .c files that #include this header what they will
@@ -45,7 +44,8 @@ vector_t *vector_new();
 
 /* Free up the memory allocated for the passed vector */
 /* YOUR CODE HERE */
-
+void vector_delete(vector_t *v);
+void vector_set(vector_t *v, size_t loc, int val);
 /* Return the value in the vector */
 int vector_get(vector_t *v, size_t loc);
 
