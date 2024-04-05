@@ -3,6 +3,8 @@
 #include <sys/time.h>
 #include <time.h>
 
+
+
 /* The naive transpose function as a reference. */
 void transpose_naive(int n, int blocksize, int *dst, int *src) {
     for (int x = 0; x < n; x++) {
@@ -16,6 +18,27 @@ void transpose_naive(int n, int blocksize, int *dst, int *src) {
  * multiple of the block size. */
 void transpose_blocking(int n, int blocksize, int *dst, int *src) {
     // YOUR CODE HERE
+    int chunkSize = blocksize*blocksize;
+    int widthAfterBlocking = n/blocksize;
+    for (int i = 0; i <= widthAfterBlocking; i++) {
+        for (int j = 0; j <= widthAfterBlocking; j++) {
+            for (int k = 0; k < blocksize; k++) {
+                if (k+i*blocksize >= n) {
+                    continue;}
+                for (int l = 0; l < blocksize; l++) {
+                    if(l+j*blocksize >= n){continue;}
+                    //printf("ind: %d, %d ", k+i*blocksize, l+j*blocksize);
+                    dst[(l+j*blocksize)*n + k + i*blocksize] = src[(k+i*blocksize)*n + l+j*blocksize];
+                    //dst[(j*blocksize+l)*blocksize*widthAfterBlocking+i*blocksize+k]=src[(i*blocksize+k)*blocksize*widthAfterBlocking+j*blocksize+l];
+                    //dst[(i*blocksize+k)*blocksize*widthAfterBlocking+j*blocksize+l]=src[(i*blocksize+k)*blocksize*widthAfterBlocking+j*blocksize+l];
+                }
+            }
+        }
+    }
+}
+
+int calculatePosition(int n, int blocksize, int i, int j, int k, int l) {
+    return 0;
 }
 
 void benchmark(int *A, int *B, int n, int blocksize,
@@ -52,7 +75,25 @@ void benchmark(int *A, int *B, int n, int blocksize,
     }
 }
 
+void print(int * toPrint, int width) {
+    for (int i = 0; i < width; i ++) {
+        for (int j = 0; j < width; j++) {
+            printf("%d\t", toPrint[i*width + j]);
+        }
+        printf("\n");
+    }
+}
+
+void test() {
+    int a[] = {0, 1, 2, 3, 4, 5, 6, 7, 8};
+    int b[9];
+    transpose_blocking(3, 2, b, a);
+    print(b, 3);
+    
+}
+
 int main( int argc, char **argv ) {
+    test();
     if (argc != 3) {
         printf("Usage: transpose <n> <blocksize>\nExiting.\n");
         exit(1);

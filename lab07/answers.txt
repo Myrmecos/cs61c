@@ -1,34 +1,34 @@
 Exercise 1
 	Scenario 1
-		1. 
-		2.
-		3.
+		1. all are misses. because step length is 8 integers, which is 4 blocks and therefore all read into same cache line, causing replacement 
+		2. 0. because after each repeat, the cache only contained 31th and 32th word, which the next round starts with reading 1st word.
+		3. make the cache fully associative.
 
 	Scenario 2
-		1.
-		2.
-		3.
-		4.
-		5.
+		1. 32
+		2. miss hit hit hit. read a four-word block: read the 0th (miss) and 2nd word (hit). write the 0th (hit) and 2nd word (hit).
+		3. 0.75, 1 miss and 3 hits per block.
+		4. approaches 1, as the cache contains all elements (64 words) of the array after one repeat, and subsequent reads all hit
+		5. try to access the elements taking up exactly the size of the cache at a time and apply all functions to them before moving on to the next group of cache-sized elements
 
 	Scenario 3
-		1.
-		2.
-		3.
-		4.
-		5.
+		1. L1: 50%; L2: 0%; overall: 50%
+		2. L1: 32 times; 16 of them are misses
+		3. L2: 16 times. L1 visits L2 at 0, 2, 4, ... 30th access to array data
+		4. increase block size of L2 cache, such that the every time L1 visits L2 and L2 misses, L2 can take in more data such that next time L1 accesses it, it is more likely to (in the case of this lab, it will) contain data requested by L2
+		5. miss rate of L1 will remain 50% because of cache thrashing. miss rate of L2 will approach 0% as it contains all data after first repeat.
 
 Exercise 2
-	ijk:
-	ikj:
-	jik:
-	jki:
-	kij:
-	kji:
+	ijk:    n = 1000, 1.675 Gflop/s
+	ikj:    n = 1000, 4.425 Gflop/s
+	jik:    n = 1000, 1.718 Gflop/s
+	jki:    n = 1000, 24.752 Gflop/s
+	kij:    n = 1000, 4.117 Gflop/s
+	kji:    n = 1000, 19.671 Gflop/s
 
-	1.
-	2.
-	3.
+	1. jki, because a. if all matrices are arranged in row-major mannar, the step in inner loop is only 1 or 0 (therefore fully utilizing col-major arrangement); and b. step in middle loop is n or 1 (therefore not requiring complete change of caches containing entries of two matrices);
+	2. (?) ijk, because a. for inner loop either row-major or column-major arrangement would not help reduce step length; b. for middle loop a n-step may not fit perfectly with a row-major form
+	3. the smaller the stride of inner loop, the better the performance
 
 Exercise 3
 	Part 1

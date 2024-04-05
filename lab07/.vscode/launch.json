@@ -4,6 +4,15 @@
     {
       "type": "venus",
       "request": "launch",
+      "name": "Ask for file name",
+      "program": "${workspaceFolder}/${command:AskForProgramName}",
+      "stopOnEntry": true,
+      "openViews": []
+    },
+
+    {
+      "type": "venus",
+      "request": "launch",
       "name": "Launch with all views",
       "program": "${file}",
       "stopOnEntry": true,
@@ -19,6 +28,7 @@
         "y": 10
       }
     },
+
     {
       "name": "C/C++ Runner: Debug Session",
       "type": "lldb",
@@ -27,11 +37,11 @@
         ""
       ],
       "stopAtEntry": true,
-      "cwd": "/Users/entomophile/CS/CS61C/lab03",
+      "cwd": "/Users/entomophile/CS/CS61C/lab07",
       "environment": [],
-      "program": "/Users/entomophile/CS/CS61C/lab03/build/Debug/outDebug",
+      "program": "/Users/entomophile/CS/CS61C/lab07/build/Debug/outDebug",
       "internalConsoleOptions": "openOnSessionStart",
-      "MIMode": "lldb",
+      "MIMode": "gdb",
       "externalConsole": false
     }
   ]
