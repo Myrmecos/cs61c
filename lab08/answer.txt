@@ -1,0 +1,7 @@
+1. 32 bytes; TLB misses usually>=4, Page fault usually>= 4; 10 30 50 70 90 10 30 50 70 90; at first access we loop it up on TLB, miss, go to page table, page faults, OS allocates memory for it, fill Page table, fill TLB.
+
+2. See above. 
+
+3. Make physical memory larger such that it could contain >= 5 pages. This time page fault will be reduced to 5.
+
+4. Four processes are accessing the memory at the same time, and each time a process exits from sleep the TLB has to be set up again, unlike the previous single-process case where PT is not cleared when running. Solution is to store TLB for every process.
