@@ -18,7 +18,7 @@ void transpose_naive(int n, int blocksize, int *dst, int *src) {
  * multiple of the block size. */
 void transpose_blocking(int n, int blocksize, int *dst, int *src) {
     // YOUR CODE HERE
-    int chunkSize = blocksize*blocksize;
+    //int chunkSize = blocksize*blocksize;
     int widthAfterBlocking = n/blocksize;
     for (int i = 0; i <= widthAfterBlocking; i++) {
         for (int j = 0; j <= widthAfterBlocking; j++) {
@@ -84,7 +84,7 @@ void print(int * toPrint, int width) {
     }
 }
 
-void test() {
+void test(void) {
     int a[] = {0, 1, 2, 3, 4, 5, 6, 7, 8};
     int b[9];
     transpose_blocking(3, 2, b, a);
@@ -93,7 +93,7 @@ void test() {
 }
 
 int main( int argc, char **argv ) {
-    test();
+    //test();
     if (argc != 3) {
         printf("Usage: transpose <n> <blocksize>\nExiting.\n");
         exit(1);
