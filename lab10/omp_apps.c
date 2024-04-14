@@ -12,22 +12,10 @@ double dotp_naive(double* x, double* y, int arr_size) {
 #pragma omp parallel
   {
 #pragma omp for
-    for (int i = 0; i < arr_size; i++)
-#pragma omp critical
-      global_sum += x[i] * y[i];
-  }
-  return global_sum;
-}
-
-// EDIT THIS FUNCTION PART 1
-double dotp_manual_optimized(double* x, double* y, int arr_size) {
-  double global_sum = 0.0;
-#pragma omp parallel
-  {
-#pragma omp for
-    for (int i = 0; i < arr_size; i++)
-#pragma omp critical
-      global_sum += x[i] * y[i];
+    for (int i = 0; i < arr_size; i++) {
+      #pragma omp critical
+        global_sum += x[i] * y[i];
+    }
   }
   return global_sum;
 }
@@ -37,10 +25,26 @@ double dotp_reduction_optimized(double* x, double* y, int arr_size) {
   double global_sum = 0.0;
 #pragma omp parallel
   {
-#pragma omp for
-    for (int i = 0; i < arr_size; i++)
-#pragma omp critical
-      global_sum += x[i] * y[i];
+#pragma omp for reduction(+:global_sum)
+    for (int i = 0; i < arr_size; i++) {
+        global_sum += x[i] * y[i];
+    }
+  }
+  return global_sum;
+}
+
+// EDIT THIS FUNCTION PART 1
+double dotp_manual_optimized(double* x, double* y, int arr_size) {
+  double global_sum = 0.0;
+  #pragma omp parallel
+  { 
+    double local_sum = 0.0;
+    #pragma omp for
+      for (int i = 0; i < arr_size; i++) {
+        local_sum += x[i] * y[i];
+      }
+    #pragma omp critical
+        global_sum += local_sum;
   }
   return global_sum;
 }
@@ -58,20 +62,22 @@ char* compute_dotp(int arr_size) {
     serial_result += x[i] * y[i];
   }
 
+  printf("Hello there\n");
+
   int num_threads = omp_get_max_threads();
   for (int i = 1; i <= num_threads; i++) {
     omp_set_num_threads(i);
     start_time = omp_get_wtime();
-    for (int j = 0; j < REPEAT; j++) result = dotp_manual_optimized(x, y, arr_size);
+    for (int j = 0; j < REPEAT; j++) {result = dotp_manual_optimized(x, y, arr_size);}
     run_time = omp_get_wtime() - start_time;
     pos += sprintf(pos, "Manual Optimized: %d thread(s) took %f seconds\n", i, run_time);
-
     // verify result is correct (within some threshold)
     if (fabs(serial_result - result) > 0.001) {
       pos += sprintf(pos, "Incorrect result!\n");
       *pos = '\0';
       return report_buf;
     }
+    printf("%s", pos);
   }
 
   for (int i = 1; i <= num_threads; i++) {
