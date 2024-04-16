@@ -142,10 +142,10 @@
       <text fill="#404040" font-family="Dialog" font-size="12" text-anchor="end" x="1132" y="49">ASel</text>
       <text fill="#404040" font-family="Dialog" font-size="12" text-anchor="end" x="1182" y="49">BSel</text>
       <circ-port height="10" pin="670,210" width="10" x="1165" y="25"/>
-      <circ-port height="10" pin="420,210" width="10" x="495" y="25"/>
       <circ-port height="10" pin="620,210" width="10" x="1115" y="25"/>
-      <circ-port height="10" pin="500,210" width="10" x="575" y="25"/>
       <circ-port height="10" pin="570,210" width="10" x="925" y="25"/>
+      <circ-port height="10" pin="500,210" width="10" x="575" y="25"/>
+      <circ-port height="10" pin="420,210" width="10" x="495" y="25"/>
       <circ-port height="10" pin="350,210" width="10" x="55" y="25"/>
       <circ-port height="8" pin="250,210" width="8" x="1006" y="26"/>
       <circ-port height="8" pin="200,210" width="8" x="966" y="26"/>
@@ -198,9 +198,11 @@
     <wire from="(690,230)" to="(710,230)"/>
     <wire from="(260,750)" to="(290,750)"/>
     <wire from="(310,230)" to="(330,230)"/>
+    <wire from="(260,840)" to="(280,840)"/>
     <wire from="(130,590)" to="(150,590)"/>
     <wire from="(130,670)" to="(150,670)"/>
     <wire from="(130,750)" to="(150,750)"/>
+    <wire from="(140,840)" to="(160,840)"/>
     <wire from="(270,300)" to="(280,300)"/>
     <wire from="(270,400)" to="(280,400)"/>
     <wire from="(270,460)" to="(280,460)"/>
@@ -226,6 +228,7 @@
       <a name="width" val="32"/>
       <a name="label" val="inst"/>
       <a name="labelloc" val="north"/>
+      <a name="radix" val="16"/>
     </comp>
     <comp lib="0" loc="(200,230)" name="Tunnel">
       <a name="facing" val="north"/>
@@ -425,6 +428,15 @@
     </comp>
     <comp lib="0" loc="(300,670)" name="Tunnel">
       <a name="label" val="BSel"/>
+    </comp>
+    <comp lib="0" loc="(140,840)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="width" val="32"/>
+      <a name="label" val="inst"/>
+    </comp>
+    <comp loc="(260,840)" name="makeMemRW"/>
+    <comp lib="0" loc="(280,840)" name="Tunnel">
+      <a name="label" val="MemRW"/>
     </comp>
   </circuit>
   <circuit name="makeImmSel">
@@ -922,22 +934,22 @@
     <wire from="(430,210)" to="(440,210)"/>
     <wire from="(280,210)" to="(290,210)"/>
     <wire from="(210,410)" to="(290,410)"/>
+    <wire from="(160,500)" to="(170,500)"/>
     <wire from="(160,650)" to="(170,650)"/>
+    <wire from="(160,600)" to="(170,600)"/>
+    <wire from="(160,620)" to="(170,620)"/>
+    <wire from="(160,670)" to="(170,670)"/>
+    <wire from="(160,700)" to="(170,700)"/>
+    <wire from="(160,720)" to="(170,720)"/>
+    <wire from="(160,770)" to="(170,770)"/>
+    <wire from="(160,750)" to="(170,750)"/>
     <wire from="(160,570)" to="(170,570)"/>
     <wire from="(160,470)" to="(170,470)"/>
-    <wire from="(160,500)" to="(170,500)"/>
     <wire from="(160,550)" to="(170,550)"/>
     <wire from="(160,520)" to="(170,520)"/>
     <wire from="(160,420)" to="(170,420)"/>
     <wire from="(160,400)" to="(170,400)"/>
     <wire from="(160,450)" to="(170,450)"/>
-    <wire from="(160,670)" to="(170,670)"/>
-    <wire from="(160,600)" to="(170,600)"/>
-    <wire from="(160,620)" to="(170,620)"/>
-    <wire from="(160,700)" to="(170,700)"/>
-    <wire from="(160,720)" to="(170,720)"/>
-    <wire from="(160,770)" to="(170,770)"/>
-    <wire from="(160,750)" to="(170,750)"/>
     <wire from="(210,610)" to="(220,610)"/>
     <wire from="(290,410)" to="(290,530)"/>
     <wire from="(210,560)" to="(340,560)"/>
@@ -1242,13 +1254,13 @@
     <wire from="(1540,460)" to="(1540,470)"/>
     <wire from="(1470,430)" to="(1480,430)"/>
     <wire from="(1470,350)" to="(1480,350)"/>
-    <wire from="(580,730)" to="(600,730)"/>
-    <wire from="(580,490)" to="(600,490)"/>
-    <wire from="(580,1210)" to="(600,1210)"/>
-    <wire from="(580,1450)" to="(600,1450)"/>
     <wire from="(580,1690)" to="(600,1690)"/>
     <wire from="(580,970)" to="(600,970)"/>
     <wire from="(580,1930)" to="(600,1930)"/>
+    <wire from="(580,1450)" to="(600,1450)"/>
+    <wire from="(580,730)" to="(600,730)"/>
+    <wire from="(580,490)" to="(600,490)"/>
+    <wire from="(580,1210)" to="(600,1210)"/>
     <wire from="(270,570)" to="(300,570)"/>
     <wire from="(230,1170)" to="(260,1170)"/>
     <wire from="(270,330)" to="(300,330)"/>
@@ -1262,13 +1274,13 @@
     <wire from="(1460,410)" to="(1480,410)"/>
     <wire from="(1460,330)" to="(1480,330)"/>
     <wire from="(1520,470)" to="(1540,470)"/>
-    <wire from="(590,750)" to="(600,750)"/>
-    <wire from="(590,510)" to="(600,510)"/>
-    <wire from="(590,1950)" to="(600,1950)"/>
-    <wire from="(590,1230)" to="(600,1230)"/>
-    <wire from="(590,1470)" to="(600,1470)"/>
     <wire from="(590,1710)" to="(600,1710)"/>
     <wire from="(590,990)" to="(600,990)"/>
+    <wire from="(590,1950)" to="(600,1950)"/>
+    <wire from="(590,1470)" to="(600,1470)"/>
+    <wire from="(590,1230)" to="(600,1230)"/>
+    <wire from="(590,750)" to="(600,750)"/>
+    <wire from="(590,510)" to="(600,510)"/>
     <wire from="(1610,340)" to="(1610,370)"/>
     <wire from="(270,1080)" to="(270,1090)"/>
     <wire from="(280,1100)" to="(320,1100)"/>
@@ -2782,11 +2794,11 @@
     <wire from="(160,550)" to="(170,550)"/>
     <wire from="(160,530)" to="(170,530)"/>
     <wire from="(160,610)" to="(170,610)"/>
+    <wire from="(160,590)" to="(170,590)"/>
     <wire from="(160,670)" to="(170,670)"/>
-    <wire from="(160,650)" to="(170,650)"/>
     <wire from="(160,730)" to="(170,730)"/>
     <wire from="(160,710)" to="(170,710)"/>
-    <wire from="(160,590)" to="(170,590)"/>
+    <wire from="(160,650)" to="(170,650)"/>
     <wire from="(210,540)" to="(280,540)"/>
     <wire from="(290,480)" to="(290,600)"/>
     <wire from="(270,460)" to="(340,460)"/>
@@ -3756,6 +3768,98 @@
     </comp>
     <comp lib="0" loc="(620,440)" name="Tunnel">
       <a name="label" val="BrUn"/>
+    </comp>
+  </circuit>
+  <circuit name="makeMemRW">
+    <a name="circuit" val="makeMemRW"/>
+    <a name="clabel" val=""/>
+    <a name="clabelup" val="east"/>
+    <a name="clabelfont" val="SansSerif bold 16"/>
+    <a name="circuitnamedbox" val="true"/>
+    <a name="circuitvhdlpath" val=""/>
+    <wire from="(430,210)" to="(440,210)"/>
+    <wire from="(280,210)" to="(290,210)"/>
+    <wire from="(590,210)" to="(610,210)"/>
+    <wire from="(230,360)" to="(240,360)"/>
+    <wire from="(230,340)" to="(240,340)"/>
+    <wire from="(230,430)" to="(240,430)"/>
+    <wire from="(230,410)" to="(240,410)"/>
+    <wire from="(280,350)" to="(300,350)"/>
+    <wire from="(280,420)" to="(300,420)"/>
+    <wire from="(280,600)" to="(330,600)"/>
+    <wire from="(170,210)" to="(190,210)"/>
+    <comp loc="(430,210)" name="getOP"/>
+    <comp lib="0" loc="(440,210)" name="Tunnel">
+      <a name="width" val="7"/>
+      <a name="label" val="opcode"/>
+    </comp>
+    <comp lib="0" loc="(280,210)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="width" val="32"/>
+      <a name="label" val="inst"/>
+    </comp>
+    <comp lib="0" loc="(190,210)" name="Tunnel">
+      <a name="width" val="32"/>
+      <a name="label" val="inst"/>
+    </comp>
+    <comp lib="0" loc="(170,210)" name="Pin">
+      <a name="width" val="32"/>
+      <a name="labelloc" val="north"/>
+      <a name="radix" val="16"/>
+    </comp>
+    <comp lib="0" loc="(590,210)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="MemRW"/>
+    </comp>
+    <comp lib="0" loc="(610,210)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="0" loc="(230,360)" name="Constant">
+      <a name="width" val="7"/>
+      <a name="value" val="0x13"/>
+    </comp>
+    <comp lib="0" loc="(230,340)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="width" val="7"/>
+      <a name="label" val="opcode"/>
+    </comp>
+    <comp lib="3" loc="(280,350)" name="Comparator">
+      <a name="width" val="7"/>
+    </comp>
+    <comp lib="0" loc="(300,350)" name="Tunnel">
+      <a name="label" val="MemReadEn"/>
+    </comp>
+    <comp lib="3" loc="(280,420)" name="Comparator">
+      <a name="width" val="7"/>
+    </comp>
+    <comp lib="0" loc="(230,430)" name="Constant">
+      <a name="width" val="7"/>
+      <a name="value" val="0x23"/>
+    </comp>
+    <comp lib="0" loc="(300,420)" name="Tunnel">
+      <a name="label" val="MemWriteEn"/>
+    </comp>
+    <comp lib="0" loc="(230,410)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="width" val="7"/>
+      <a name="label" val="opcode"/>
+    </comp>
+    <comp lib="0" loc="(330,600)" name="Tunnel">
+      <a name="label" val="MemRW"/>
+    </comp>
+    <comp lib="0" loc="(280,600)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="MemWriteEn"/>
+    </comp>
+    <comp lib="0" loc="(280,540)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="MemReadEn"/>
+    </comp>
+    <comp lib="5" loc="(305,663)" name="Text">
+      <a name="text" val="only enable writing when sw, other times, read mem (as we don't have a third option)"/>
+      <a name="font" val="SansSerif plain 12"/>
     </comp>
   </circuit>
 </project>
