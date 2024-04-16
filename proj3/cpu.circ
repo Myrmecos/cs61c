@@ -13,7 +13,7 @@
       <a name="facing" val="north"/>
     </tool>
     <tool name="Probe">
-      <a name="facing" val="west"/>
+      <a name="facing" val="south"/>
       <a name="radix" val="16"/>
     </tool>
     <tool name="Tunnel">
@@ -428,6 +428,7 @@
       <a name="width" val="32"/>
       <a name="label" val="PROGRAM_COUNTER"/>
       <a name="labelloc" val="south"/>
+      <a name="radix" val="16"/>
     </comp>
     <comp lib="0" loc="(1230,190)" name="Pin">
       <a name="facing" val="south"/>
