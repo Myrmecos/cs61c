@@ -13,6 +13,7 @@
       <a name="facing" val="north"/>
     </tool>
     <tool name="Probe">
+      <a name="facing" val="south"/>
       <a name="radix" val="16"/>
     </tool>
     <tool name="Tunnel">
@@ -132,8 +133,8 @@
       <text fill="#404040" font-family="Dialog" font-size="12" text-anchor="start" x="61" y="137">ImmSel</text>
       <text fill="#404040" font-family="Dialog" font-size="12" text-anchor="end" x="109" y="104">imm</text>
       <circ-port height="8" pin="200,230" width="8" x="76" y="146"/>
-      <circ-port height="10" pin="940,160" width="10" x="115" y="95"/>
       <circ-port height="8" pin="200,160" width="8" x="36" y="96"/>
+      <circ-port height="10" pin="940,160" width="10" x="115" y="95"/>
       <polygon fill="none" points="40,31 120,70 120,130 40,170" stroke="#000000" stroke-width="2"/>
       <text font-family="SansSerif" font-size="12" font-weight="bold" text-anchor="middle" x="80" y="81">Imm Gen</text>
       <circ-anchor facing="east" height="6" width="6" x="117" y="97"/>
@@ -143,10 +144,12 @@
     <wire from="(670,660)" to="(710,660)"/>
     <wire from="(710,430)" to="(710,460)"/>
     <wire from="(220,180)" to="(220,210)"/>
+    <wire from="(300,590)" to="(390,590)"/>
     <wire from="(710,770)" to="(710,810)"/>
     <wire from="(710,890)" to="(710,930)"/>
     <wire from="(920,220)" to="(1070,220)"/>
     <wire from="(920,100)" to="(1070,100)"/>
+    <wire from="(790,670)" to="(790,710)"/>
     <wire from="(920,100)" to="(920,140)"/>
     <wire from="(920,180)" to="(920,220)"/>
     <wire from="(670,470)" to="(700,470)"/>
@@ -159,6 +162,7 @@
     <wire from="(220,100)" to="(220,140)"/>
     <wire from="(160,410)" to="(180,410)"/>
     <wire from="(200,230)" to="(220,230)"/>
+    <wire from="(720,710)" to="(790,710)"/>
     <wire from="(300,680)" to="(310,680)"/>
     <wire from="(160,760)" to="(170,760)"/>
     <wire from="(620,780)" to="(630,780)"/>
@@ -170,6 +174,7 @@
     <wire from="(590,550)" to="(630,550)"/>
     <wire from="(670,770)" to="(710,770)"/>
     <wire from="(670,890)" to="(710,890)"/>
+    <wire from="(790,710)" to="(810,710)"/>
     <wire from="(70,100)" to="(70,260)"/>
     <wire from="(920,160)" to="(940,160)"/>
     <wire from="(710,560)" to="(710,600)"/>
@@ -183,7 +188,6 @@
     <wire from="(670,940)" to="(700,940)"/>
     <wire from="(720,470)" to="(750,470)"/>
     <wire from="(720,610)" to="(750,610)"/>
-    <wire from="(720,710)" to="(750,710)"/>
     <wire from="(70,100)" to="(220,100)"/>
     <wire from="(70,260)" to="(220,260)"/>
     <wire from="(600,570)" to="(630,570)"/>
@@ -191,7 +195,6 @@
     <wire from="(160,500)" to="(180,500)"/>
     <wire from="(160,680)" to="(180,680)"/>
     <wire from="(200,160)" to="(220,160)"/>
-    <wire from="(300,590)" to="(310,590)"/>
     <wire from="(160,330)" to="(170,330)"/>
     <wire from="(160,590)" to="(170,590)"/>
     <comp lib="0" loc="(220,160)" name="Tunnel">
@@ -201,6 +204,7 @@
     <comp lib="0" loc="(200,160)" name="Pin">
       <a name="width" val="32"/>
       <a name="label" val="inst"/>
+      <a name="radix" val="16"/>
     </comp>
     <comp lib="5" loc="(562,43)" name="Text">
       <a name="text" val="DON'T CHANGE THE LOCATIONS OF THE INPUTS AND OUTPUTS!"/>
@@ -271,10 +275,6 @@
       <a name="label" val="S_type"/>
     </comp>
     <comp loc="(300,590)" name="getSBTypeImm"/>
-    <comp lib="0" loc="(310,590)" name="Tunnel">
-      <a name="width" val="32"/>
-      <a name="label" val="SB_type"/>
-    </comp>
     <comp lib="0" loc="(160,590)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="width" val="32"/>
@@ -328,7 +328,7 @@
     <comp lib="0" loc="(670,710)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="width" val="32"/>
-      <a name="label" val="S_type"/>
+      <a name="label" val="SB_type"/>
     </comp>
     <comp lib="0" loc="(670,820)" name="Tunnel">
       <a name="facing" val="east"/>
@@ -339,10 +339,6 @@
       <a name="width" val="32"/>
       <a name="control" val="left"/>
       <a name="label" val="U_type"/>
-    </comp>
-    <comp lib="0" loc="(750,710)" name="Tunnel">
-      <a name="width" val="32"/>
-      <a name="label" val="imm"/>
     </comp>
     <comp lib="0" loc="(750,820)" name="Tunnel">
       <a name="width" val="32"/>
@@ -419,6 +415,18 @@
     </comp>
     <comp lib="3" loc="(660,430)" name="Comparator">
       <a name="width" val="3"/>
+    </comp>
+    <comp lib="0" loc="(790,670)" name="Probe">
+      <a name="facing" val="south"/>
+      <a name="radix" val="16"/>
+    </comp>
+    <comp lib="0" loc="(390,590)" name="Tunnel">
+      <a name="width" val="32"/>
+      <a name="label" val="SB_type"/>
+    </comp>
+    <comp lib="0" loc="(810,710)" name="Tunnel">
+      <a name="width" val="32"/>
+      <a name="label" val="imm"/>
     </comp>
   </circuit>
   <circuit name="getOP">
@@ -965,6 +973,7 @@
     <comp lib="0" loc="(150,200)" name="Pin">
       <a name="width" val="32"/>
       <a name="label" val="instr"/>
+      <a name="radix" val="16"/>
     </comp>
     <comp lib="0" loc="(220,200)" name="Splitter">
       <a name="fanout" val="4"/>
